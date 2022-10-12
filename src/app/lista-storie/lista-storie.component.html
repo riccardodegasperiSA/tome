@@ -1,5 +1,14 @@
-
-<button *ngFor="let storia of storie" (click)="onVaiStoria(storia.id)" class="p-2 bd-highlight btn-lg btn-block text-left">
-    <b>TITLE: </b>{{ storia.title }}<br>
-    <b>SUMMARY: </b>{{ storia.summary }}
-</button>
+<div *ngFor="let storia of storie">
+    <ul class="list-inline m-0">
+        <li>
+            <button (click)="onVaiStoria(storia.id)" class="p-2 bd-highlight btn-lg btn-block text-left">
+                <b>ID(for debug):</b>{{ storia.id }}<br>
+                <b>TITLE: </b>{{ storia.title }}<br>
+                <b>SUMMARY: </b>{{ storia.summary }}
+            </button>
+        </li>
+        <li>
+            <button class="btn btn-danger btn-sm rounded-o" (click)="onDeleteStoria(storia.id)">Rimuovi</button>
+        </li>
+    </ul>
+</div>

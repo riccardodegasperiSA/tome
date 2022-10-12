@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { observable, Subscribable, Subscription } from 'rxjs';
 import { Storia } from '../dati/storia.data';
 import { StorieServiceService } from '../storie-service.service';
 
@@ -12,6 +13,7 @@ import { StorieServiceService } from '../storie-service.service';
 export class ListaStorieComponent implements OnInit {
 
   storie: Storia[] = []
+  subscription?: Subscription
 
   constructor(private storiaService:StorieServiceService, private router:Router) { }
 
@@ -27,15 +29,23 @@ export class ListaStorieComponent implements OnInit {
     //     console.log("complete")
     //   }
     // })
-    this.storie = this.storiaService.storie
+    this.subscription = this.storiaService.storieObservable.subscribe(s => {
+      this.storie = s
+    })
   }
 
   ngOnDestroy(): void {
-    
+    this.subscription?.unsubscribe()
   }
 
   onVaiStoria(id:number) {
     this.router.navigate(["/storie/" + id])
+  }
+
+  onDeleteStoria(id:number) {
+    this.storiaService.removeStoria(id)
+    this.ngOnDestroy()
+    this.ngOnInit()
   }
 
 }
