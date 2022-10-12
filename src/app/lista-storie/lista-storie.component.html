@@ -1,8 +1,10 @@
 <div *ngFor="let storia of storie">
+    <button (click)="onVaiStoria(storia.id)">
     <ul>
         <li><b>ID: </b>{{ storia.id }}</li>
         <li><b>TITLE: </b>{{ storia.title }}</li>
-        <li><b>CONTENT: </b>{{ storia.content }}</li>
+        <li><b>SUMMARY: </b>{{ storia.summary }}</li>
     </ul>
+</button>
 </div>
 <div>Lista storie works!</div>

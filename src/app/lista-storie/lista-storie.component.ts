@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Storia } from '../dati/storia.data';
 import { StorieServiceService } from '../storie-service.service';
 
@@ -10,29 +11,31 @@ import { StorieServiceService } from '../storie-service.service';
 })
 export class ListaStorieComponent implements OnInit {
 
-  storie: Storia[] = [
-    {id:1, title:"Titolo", content:"Il contenuto della prima storia"},
-    {id:2, title:"Un titolo", content:"Il contenuto della seconda storia"},
-  ]
+  storie: Storia[] = []
 
-  constructor(private storiaService:StorieServiceService) { }
+  constructor(private storiaService:StorieServiceService, private router:Router) { }
 
   ngOnInit(): void {
-    this.storiaService.getStorieList().subscribe({
-      next: s => {
-        this.storie = s
-      },
-      error: err => {
-        console.log("error")
-      },
-      complete:() => {
-        console.log("complete")
-      }
-    })
+    // this.storiaService.getStorieList().subscribe({
+    //   next: s => {
+    //     this.storie = s
+    //   },
+    //   error: err => {
+    //     console.log("error")
+    //   },
+    //   complete:() => {
+    //     console.log("complete")
+    //   }
+    // })
+    this.storie = this.storiaService.storie
   }
 
   ngOnDestroy(): void {
     
+  }
+
+  onVaiStoria(id:number) {
+    this.router.navigate(["/storie/" + id])
   }
 
 }

@@ -7,11 +7,24 @@ import { map, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class StorieServiceService {
-  private baseUrl = "localhost:8080/"
+  private baseUrl = "http://127.0.0.1:8080/tome/"
+
+  private _storie: Storia[] = [
+    {id:1, title:"Titolo", content:"Il contenuto della prima storia", summary:"Sommario prima storia"},
+    {id:2, title:"Un titolo", content:"Il contenuto della seconda storia", summary:"Sommario seconda storia"},
+  ]
 
   constructor(private http: HttpClient) { }
 
-  getStorieList(): Observable<any> {
-    return this.http.get(this.baseUrl + "storie")
+  // getStorieList(): Observable<any> {
+  //   return this.http.get(this.baseUrl + "storie")
+  // }
+
+  get storie(): Storia[] {
+    return [...this._storie]
+  }
+
+  cercaStoria(id: number) {
+    return this._storie.find(s => s.id === id)
   }
 }

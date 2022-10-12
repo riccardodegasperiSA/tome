@@ -9,6 +9,7 @@ import { ListaStorieComponent } from './lista-storie/lista-storie.component';
 import { PaginaNonTrovataComponent } from './pagina-non-trovata/pagina-non-trovata.component';
 import { InserisciStoriaComponent } from './inserisci-storia/inserisci-storia.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoriaComponent } from './storia/storia.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     ListaStorieComponent,
     PaginaNonTrovataComponent,
-    InserisciStoriaComponent
+    InserisciStoriaComponent,
+    StoriaComponent
   ],
   imports: [
     BrowserModule,

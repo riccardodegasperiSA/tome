@@ -4,11 +4,13 @@ import { HomeComponent } from './home/home.component';
 import { InserisciStoriaComponent } from './inserisci-storia/inserisci-storia.component';
 import { ListaStorieComponent } from './lista-storie/lista-storie.component';
 import { PaginaNonTrovataComponent } from './pagina-non-trovata/pagina-non-trovata.component';
+import { StoriaComponent } from './storia/storia.component';
 
 const routes: Routes = [
   {path:"", component:HomeComponent},
   {path:"storie", component:ListaStorieComponent},
-  {path:"inserisci", component:InserisciStoriaComponent},
+  {path:"storie/:id", component:StoriaComponent},
+  {path:"aggiungi", component:InserisciStoriaComponent},
   {path:"pagina-non-trovata", component:PaginaNonTrovataComponent},
   {path:"**", redirectTo:"pagina-non-trovata"},
 ];

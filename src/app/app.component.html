@@ -1,3 +1,13 @@
+<div class="container">
+  <header class="d-flex justify-content-center py-3">
+    <ul class="nav nav-pills">
+      <li class="nav-item"><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="nav-link" aria-current="page">Home</a></li>
+      <li class="nav-item"><a routerLink="/storie" routerLinkActive="active" class="nav-link">Storie</a></li>
+      <li class="nav-item"><a routerLink="/aggiungi" routerLinkActive="active" class="nav-link">Aggiungi</a></li>
+    </ul>
+  </header>
+</div>
+
 <div>
   <router-outlet></router-outlet>
 </div>
