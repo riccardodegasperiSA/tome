@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storia } from './dati/storia.data';
 import { map, Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class StorieServiceService {
     {id:2, title:"Un titolo", content:"Il contenuto della seconda storia", summary:"Sommario seconda storia"},
   ]
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   // getStorieList(): Observable<any> {
   //   return this.http.get(this.baseUrl + "storie")
@@ -26,5 +27,10 @@ export class StorieServiceService {
 
   cercaStoria(id: number) {
     return this._storie.find(s => s.id === id)
+  }
+
+  addStoria(storia: Storia) {
+    this._storie.push(storia)
+    this.router.navigate(["/storie"])
   }
 }
