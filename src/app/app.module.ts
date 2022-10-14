@@ -10,6 +10,7 @@ import { PaginaNonTrovataComponent } from './pagina-non-trovata/pagina-non-trova
 import { InserisciStoriaComponent } from './inserisci-storia/inserisci-storia.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoriaComponent } from './storia/storia.component';
+import { ModificaStoriaComponent } from './modifica-storia/modifica-storia.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { StoriaComponent } from './storia/storia.component';
     ListaStorieComponent,
     PaginaNonTrovataComponent,
     InserisciStoriaComponent,
-    StoriaComponent
+    StoriaComponent,
+    ModificaStoriaComponent
   ],
   imports: [
     BrowserModule,

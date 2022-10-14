@@ -37,7 +37,8 @@ export class StorieServiceService {
     this.router.navigate(["/storie"])
   }
 
-  removeStoria(id: number) {
+  removeStoria(id?: number) {
     this._storie = this._storie.filter(s => s.id !== id)
   }
+
 }

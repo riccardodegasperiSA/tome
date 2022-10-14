@@ -48,4 +48,8 @@ export class ListaStorieComponent implements OnInit {
     this.ngOnInit()
   }
 
+  onModificaStoria(id:number) {
+    this.router.navigate(["/storie/modifica/" + id])
+  }
+
 }
