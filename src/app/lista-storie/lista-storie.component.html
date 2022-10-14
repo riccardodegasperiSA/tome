@@ -1,7 +1,7 @@
 <div *ngFor="let storia of storie" class="card border-primary border-right-0">
     <div class="card-body">
         <ul class="list-inline m-0">
-            <li style="width: 80%;" class="list-group-items">
+            <li style="width: calc(100% - 12em);" class="list-group-items">
                 <a (click)="onVaiStoria(storia.id)" class="p-2 bd-highlight btn-lg btn-block text-left">
                     <b class="card-title">ID(for debug):</b>{{ storia.id }}<br>
                     <div class="card-text">
