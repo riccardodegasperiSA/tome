@@ -41,4 +41,9 @@ export class StorieServiceService {
     this._storie = this._storie.filter(s => s.id !== id)
   }
 
+  modificaStoria(storia: Storia) {
+    this.removeStoria(storia.id)
+    this.addStoria(storia)
+  }
+
 }

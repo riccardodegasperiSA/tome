@@ -29,9 +29,7 @@ export class ModificaStoriaComponent implements OnInit {
   }
 
   modificaStoria() {
-    const id = this.storia?.id
-    this.storiaService.removeStoria(id)
-    this.storiaService.addStoria(this.modificaForm.value)
+    this.storiaService.modificaStoria(this.modificaForm.value)
   }
 
   onAnnulla() {
