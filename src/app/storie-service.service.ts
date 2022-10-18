@@ -10,19 +10,12 @@ import { Router } from '@angular/router';
 export class StorieServiceService {
   private baseUrl = "http://localhost:8080/tome/"
 
-  storieObservable: Observable<Storia[]>
-
   private _storie: Storia[] = [
-    {id:1, title:"Titolo", content:"Il contenuto della prima storia", summary:"Sommario prima storia"},
-    {id:2, title:"Un titolo", content:"Il contenuto della seconda storia", summary:"Sommario seconda storia"},
+    // {id:1, title:"Titolo", content:"Il contenuto della prima storia", summary:"Sommario prima storia"},
+    // {id:2, title:"Un titolo", content:"Il contenuto della seconda storia", summary:"Sommario seconda storia"},
   ]
 
-  constructor(private http: HttpClient, private router: Router) {
-    this.storieObservable = new Observable((observer) => {
-      const listaStorie = this._storie
-      observer.next(listaStorie)
-    })
-  }
+  constructor(private http: HttpClient, private router: Router) { }
 
   get storie(): Storia[] {
     return [...this._storie]
@@ -47,9 +40,10 @@ export class StorieServiceService {
   }
 
   getStorieList() {
-    this.http.get(this.baseUrl + "storie").subscribe(result => {
-      console.log(result)
-    })
+    return this.http.get<Storia[]>(this.baseUrl + "storie").pipe(map(s => {
+      const listaStorie = [...s]
+      return listaStorie
+    }))
   }
 
 }

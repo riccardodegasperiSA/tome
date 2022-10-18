@@ -18,8 +18,7 @@ export class ListaStorieComponent implements OnInit {
   constructor(private storiaService:StorieServiceService, private router:Router) { }
 
   ngOnInit(): void {
-    this.storiaService.getStorieList()
-    this.subscription = this.storiaService.storieObservable.subscribe(s => {
+    this.storiaService.getStorieList().subscribe(s => {
       this.storie = s
     })
   }
