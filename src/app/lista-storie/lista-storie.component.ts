@@ -13,7 +13,6 @@ import { StorieServiceService } from '../storie-service.service';
 export class ListaStorieComponent implements OnInit {
 
   storie: Storia[] = []
-  subscription?: Subscription
 
   constructor(private storiaService:StorieServiceService, private router:Router) { }
 
@@ -24,7 +23,6 @@ export class ListaStorieComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this.subscription?.unsubscribe()
   }
 
   onVaiStoria(id:number) {
@@ -32,9 +30,8 @@ export class ListaStorieComponent implements OnInit {
   }
 
   onDeleteStoria(id:number) {
-    this.storiaService.removeStoria(id)
-    this.ngOnDestroy()
-    this.ngOnInit()
+    this.storiaService.removeStoria(id).subscribe()
+    this.storie = this.storie.filter(s => s.id !== id)
   }
 
   onModificaStoria(id:number) {

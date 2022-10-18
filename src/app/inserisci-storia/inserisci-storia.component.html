@@ -2,10 +2,10 @@
     <main class="form w-100 m-auto">
         <h1 class="h3 mb-3 fw-normal">Inserisci la storia</h1>
         <form class="needs-validation" [formGroup]="aggiungiForm" (ngSubmit)="aggiungiStoria()" novalidate="">
-            <div class="input-group">
+            <!-- <div class="input-group">
                 <label for="id" class="form-label">id (solo perché manca il back-end)</label>
                 <input type="number" class="form-control" id="id" formControlName="id">
-            </div>
+            </div> -->
             <div class="input-group">
                 <label for="title" class="form-label">Titolo</label>
                 <input type="text" class="form-control" id="title" formControlName="title">

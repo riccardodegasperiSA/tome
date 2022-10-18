@@ -22,21 +22,22 @@ export class StorieServiceService {
   }
 
   cercaStoria(id: number) {
-    return this._storie.find(s => s.id === id)
+    return this.http.get<Storia>(this.baseUrl+"storie/"+id).pipe(map(s => {
+      const storia = {...s}
+      return(storia)
+    }))
   }
 
   addStoria(storia: Storia) {
-    this._storie.push(storia)
-    this.router.navigate(["/storie"])
+    return this.http.post(this.baseUrl + "storie/create",storia)
   }
 
   removeStoria(id?: number) {
-    this._storie = this._storie.filter(s => s.id !== id)
+    return this.http.post(this.baseUrl + "storie/delete/", id)
   }
 
   modificaStoria(storia: Storia) {
-    this.removeStoria(storia.id)
-    this.addStoria(storia)
+    return this.http.post(this.baseUrl + "storia/update", storia)
   }
 
   getStorieList() {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { StorieServiceService } from '../storie-service.service';
 
 @Component({
@@ -11,9 +12,9 @@ export class InserisciStoriaComponent implements OnInit {
 
   aggiungiForm: FormGroup
 
-  constructor(private storiaService:StorieServiceService) {
+  constructor(private storiaService:StorieServiceService, private router: Router) {
     this.aggiungiForm = new FormGroup({
-      "id": new FormControl(1, Validators.required),
+      // "id": new FormControl(1, Validators.required),
       "title": new FormControl(null, Validators.required),
       "summary": new FormControl(null, Validators.required),
       "content": new FormControl(null, Validators.required),
@@ -24,7 +25,8 @@ export class InserisciStoriaComponent implements OnInit {
   }
 
   aggiungiStoria() {
-    this.storiaService.addStoria(this.aggiungiForm.value)
+    this.storiaService.addStoria(this.aggiungiForm.value).subscribe()
+    this.router.navigate(["/storie"])
   }
 
 }

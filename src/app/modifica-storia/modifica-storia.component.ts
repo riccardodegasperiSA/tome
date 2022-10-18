@@ -15,7 +15,16 @@ export class ModificaStoriaComponent implements OnInit {
 
   constructor(private storiaService:StorieServiceService, private route: ActivatedRoute, private router:Router) {
     const { id } = route?.snapshot?.params ?? {}
-    this.storia = storiaService.cercaStoria(Number(id))
+    this.storiaService.cercaStoria(Number(id)).subscribe(s => {
+      this.storia = s
+      this.modificaForm = new FormGroup({
+        "id": new FormControl(this.storia?.id, Validators.required),
+        "title": new FormControl(this.storia?.title, Validators.required),
+        "summary": new FormControl(this.storia?.summary, Validators.required),
+        "content": new FormControl(this.storia?.content, Validators.required),
+      })
+    })
+    // this.storia = storiaService.cercaStoria(Number(id))
 
     this.modificaForm = new FormGroup({
       "id": new FormControl(this.storia?.id, Validators.required),
@@ -26,10 +35,12 @@ export class ModificaStoriaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
   }
 
   modificaStoria() {
-    this.storiaService.modificaStoria(this.modificaForm.value)
+    this.storiaService.modificaStoria(this.modificaForm.value).subscribe()
+    this.router.navigate(["/storie"])
   }
 
   onAnnulla() {

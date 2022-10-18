@@ -12,15 +12,18 @@ import { StorieServiceService } from '../storie-service.service';
 export class StoriaComponent implements OnInit {
 
   storia?: Storia
-  subscription?: Subscription
 
   constructor(private route: ActivatedRoute, private storiaService: StorieServiceService) {
     const { id } = route?.snapshot?.params ?? {}
-    this.storia = storiaService.cercaStoria(Number(id))
+    this.storiaService.cercaStoria(Number(id)).subscribe(s => {
+      this.storia = s
+    })
+    // this.storia = storiaService.cercaStoria(Number(id))
 
   }
 
   ngOnInit(): void {
+
   }
 
 }
