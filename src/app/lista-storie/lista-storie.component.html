@@ -1,21 +1,17 @@
-<div *ngFor="let storia of storie" class="card border-primary border-right-0">
-    <div class="card-body">
-        <ul class="list-inline m-0">
-            <li style="width: calc(100% - 12em);" class="list-group-items">
-                <a (click)="onVaiStoria(storia.id)" class="p-2 bd-highlight btn-lg btn-block text-left">
-                    <b class="card-title">ID(for debug):</b>{{ storia.id }}<br>
-                    <div class="card-text">
-                        <b>TITLE: </b>{{ storia.title }}<br>
-                        <b>SUMMARY: </b>{{ storia.summary }}
-                    </div>
-                </a>
-            </li>
-            <li style="width: 5em;" class="list-group-items">
-                <button class="btn btn-warning btn-sm rounded-o" (click)="onModificaStoria(storia.id)">Modifica</button>
-            </li>
-            <li style="width: 5em;" class="list-group-items">
-                <button class="btn btn-danger btn-sm rounded-o" (click)="onDeleteStoria(storia.id)">Rimuovi</button>
-            </li>
-        </ul>
+<div *ngFor="let storia of storie" class="border" style="width: 100%">
+    <div class="d-flex">
+        <div class="card-body me-auto p-2" style="max-width: 70%;">
+            <a (click)="onVaiStoria(storia.id)">
+                <div>
+                    <b class="card-title">ID(for debug): </b>{{ storia.id }}
+                    <b>TITLE: </b>{{ storia.title }}<br>
+                    <div class="text-break">{{ storia.summary }}</div>
+                </div>
+            </a>
+        </div>
+        <div>
+            <button class="btn btn-warning btn-sm rounded-o p-1 me-2 mt-3" (click)="onModificaStoria(storia.id)">Modifica</button>
+            <button class="btn btn-danger btn-sm rounded-o p-1 me-2 mt-3" (click)="onDeleteStoria(storia.id)">Rimuovi</button>
+        </div>
     </div>
 </div>

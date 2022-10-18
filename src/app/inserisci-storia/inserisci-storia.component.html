@@ -12,11 +12,11 @@
             </div>
             <div class="input-group" style="min-width: 100%;">
                 <label for="summary" class="form-label">Sommario</label>
-                <textarea id="summary" class="form-control" style="min-width: 100%;" formControlName="summary"></textarea>
+                <textarea id="summary" maxlength="255" class="form-control" style="min-width: 100%;" formControlName="summary"></textarea>
             </div>
             <div class="input-group" style="min-width: 100%;">
                 <label for="content" class="form-label">Testo</label>
-                <textarea id="content" class="form-control" style="min-width: 100%; min-height: 25em;" formControlName="content"></textarea>
+                <textarea id="content" class="form-control" style="min-width: 100%; min-height: 20em;" formControlName="content"></textarea>
             </div>
             <button class="w-100 btn btn-primary btn-lg" type="submit" [disabled]="!aggiungiForm.valid">Conferma aggiunta</button>
         </form>
