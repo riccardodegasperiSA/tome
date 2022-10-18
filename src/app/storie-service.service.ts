@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class StorieServiceService {
-  private baseUrl = "http://127.0.0.1:8080/tome/"
+  private baseUrl = "http://localhost:8080/tome/"
 
   storieObservable: Observable<Storia[]>
 
@@ -44,6 +44,12 @@ export class StorieServiceService {
   modificaStoria(storia: Storia) {
     this.removeStoria(storia.id)
     this.addStoria(storia)
+  }
+
+  getStorieList() {
+    this.http.get(this.baseUrl + "storie").subscribe(result => {
+      console.log(result)
+    })
   }
 
 }
