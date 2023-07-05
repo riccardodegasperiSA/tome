@@ -16,10 +16,14 @@ export class ListaStorieComponent implements OnInit {
 
   constructor(private storiaService:StorieServiceService, private router:Router) { }
 
-  ngOnInit(): void {
+  estraiStorie(): void {
     this.storiaService.getStorieList().subscribe(s => {
       this.storie = s
     })
+  }
+
+  ngOnInit(): void {
+    this.estraiStorie()
   }
 
   ngOnDestroy(): void {

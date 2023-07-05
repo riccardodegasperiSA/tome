@@ -1,6 +1,9 @@
+<div class="container">
+    <button class="btn btn-info" (click)="estraiStorie()">refresh</button>
+</div>
 <div *ngFor="let storia of storie" class="border" style="width: 100%">
     <div class="d-flex">
-        <div class="card-body me-auto p-2" style="max-width: 70%;">
+        <div class="card-body me-auto p-2" style="cursor: pointer;">
             <a (click)="onVaiStoria(storia.id)">
                 <div>
                     <b class="p-2">{{ storia.title }}</b><br>
